@@ -12,7 +12,7 @@ import java.io.IOException;
 @Component
 public class PostDataLoader implements CommandLineRunner {
 
-    private final static Logger log = LoggerFactory.getLogger(PostDataLoader.class);
+    private final static Logger LOG = LoggerFactory.getLogger(PostDataLoader.class);
     private final static String POSTS_JSON = "/data/posts.json";
     private final ObjectMapper objectMapper;
     private final PostRepository postRepository;
@@ -26,7 +26,7 @@ public class PostDataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         if (postRepository.count() == 0){
-            log.info("Loading posts into database from JSON: {}", POSTS_JSON);
+            LOG.info("Loading posts into database from JSON: {}", POSTS_JSON);
             try (var inputStream = TypeReference.class.getResourceAsStream(POSTS_JSON)){
                 Posts response = objectMapper.readValue(inputStream, Posts.class);
                 postRepository.saveAll(response.posts());

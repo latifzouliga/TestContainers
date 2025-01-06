@@ -53,11 +53,9 @@ class PostRepositoryTest {
 
     @BeforeEach
     void setUp() {
-//        List<Post> posts = List.of(new Post(1, 1, "hello World", "this is for learning test containers", null));
-//        postRepository.saveAll(posts);
+        List<Post> posts = List.of(new Post(1, 1, "Hello", "World", null));
+        postRepository.saveAll(posts);
 
-        Post post = new Post(1,1,"Hello", "World", null);
-        postRepository.save(post);
     }
 
     @DisplayName("Get Post By Title")
